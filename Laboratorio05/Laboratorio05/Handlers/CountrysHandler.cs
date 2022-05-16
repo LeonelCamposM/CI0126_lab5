@@ -1,11 +1,11 @@
-﻿using Lab5.Models;
+﻿using Laboratorio05.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Lab5.Handlers
+namespace Laboratorio05.Handlers
 {
     public class CountryHandler
     {

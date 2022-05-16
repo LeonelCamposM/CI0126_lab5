@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace Lab5.Models
+namespace Laboratorio05.Models
 {
     public class CountryModel
     {

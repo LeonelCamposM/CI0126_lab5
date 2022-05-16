@@ -1,4 +1,4 @@
-﻿using Lab5.Handlers;
+﻿using Laboratorio05.Handlers;
 using Microsoft.AspNetCore.Mvc;
 namespace Laboratorio5.Controllers
 {
