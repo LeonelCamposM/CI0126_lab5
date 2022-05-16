@@ -1,0 +1,18 @@
+﻿@model Laboratorio3.Models.SongModel;
+@{
+    ViewData["Title"] = "Song";
+}
+<p>
+    <b> @ViewBag.MainTitle </b>
+</p>
+
+@{
+    var item = Model;
+    }
+<br />
+<pre>
+Genre:               @item.Genre<br />
+Author:              @item.Author<br />
+Views:               @item.Views<br />
+Launch Date:         @item.LaunchDate<br />
+</pre>

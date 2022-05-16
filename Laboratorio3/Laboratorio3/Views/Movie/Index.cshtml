@@ -1,0 +1,32 @@
+﻿@model List<Laboratorio3.Models.MovieModel>;
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h1> @ViewBag.MainTitle </h1>
+
+<div>
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Movie title</th>
+                <th>Gender</th>
+                <th>Released data</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Genre</td>
+                    <td>@item.ReleasedDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <button>I am a button</button>
+</div>
