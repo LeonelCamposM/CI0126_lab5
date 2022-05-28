@@ -84,6 +84,23 @@ namespace Laboratorio05.Controllers
             {
                 return View();
             }
+        } 
+
+        [HttpGet]
+        public ActionResult DeleteCountry(int? identificador)
+        {
+            ViewBag.ExitoAlCrear = false;
+            try
+            {
+                var paisesHandler = new CountryHandler();
+                paisesHandler.DeletePais(identificador);
+                return RedirectToAction("Index", "Country");
+
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
