@@ -1,0 +1,44 @@
+﻿@model Laboratorio05.Models.CountryModel
+@{
+    ViewBag.Title = "Crear País";
+    List<SelectListItem> listaContinentes = new List<SelectListItem>() { new
+    SelectListItem { Text = "América" }, new SelectListItem { Text = "Asia" }, new
+    SelectListItem { Text = "Europa" }, new SelectListItem { Text = "Oceanía" }, new
+    SelectListItem { Text = "Antártida" }, new SelectListItem { Text = "África" }};
+}
+<html>
+    <head>
+    </head>
+
+    <body>
+        @using (Html.BeginForm("EditCountry", "Country", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <h1>Formulario de edición de países</h1>
+            @Html.HiddenFor(model=>model.Id)
+            <div class="form-horizontal">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class ="text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Continent)
+                @Html.DropDownListFor(model => model.Continent, listaContinentes, "-Sin selección-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Continent, "", new { @class ="text-danger" })
+            </div>
+            <div class="form-group">
+            @Html.LabelFor(model => model.Idiom)
+            @Html.TextBoxFor(model => model.Idiom, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Idiom, "", new { @class =
+            "text-danger" })
+            </div>
+            <div>
+                <input type="submit" class="btn btn-success" value="Editar" />
+            </div>
+            </div>
+        }
+    </body>
+</html>
