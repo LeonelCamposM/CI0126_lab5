@@ -1,7 +1,7 @@
 ﻿using Laboratorio05.Handlers;
 using Laboratorio05.Models;
 using Microsoft.AspNetCore.Mvc;
-namespace Laboratorio5.Controllers
+namespace Laboratorio05.Controllers
 {
     public class CountryController : Controller
     {

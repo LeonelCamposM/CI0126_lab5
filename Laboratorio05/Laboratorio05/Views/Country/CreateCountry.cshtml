@@ -1,0 +1,58 @@
+﻿@model Laboratorio05.Models.CountryModel
+@{
+    ViewBag.Title = "Crear País";
+    List<SelectListItem> listaContinentes = new List<SelectListItem>() { new
+    SelectListItem { Text = "América" }, new SelectListItem { Text = "Asia" }, new
+    SelectListItem { Text = "Europa" }, new SelectListItem { Text = "Oceanía" }, new
+    SelectListItem { Text = "Antártida" }, new SelectListItem { Text = "África" }};
+}
+<html>
+    <head>
+    </head>
+
+    <body>
+        @if (ViewBag.Message != null)
+        {
+            if (ViewBag.ExitoAlCrear)
+            {
+                <div class="alert-success">
+                <h3> @ViewBag.Message </h3>
+                </div>
+            }
+            else
+            {
+                <div class="alert-danger">
+                <h3> @ViewBag.Message </h3>
+                </div>
+            }
+        }
+        @using (Html.BeginForm("CreateCountry", "Country", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <h1>Formulario de creación de países</h1>
+            <div class="form-horizontal">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class ="text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Continent)
+                @Html.DropDownListFor(model => model.Continent, listaContinentes, "-Sin selección-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Continent, "", new { @class ="text-danger" })
+            </div>
+            <div class="form-group">
+            @Html.LabelFor(model => model.Idiom)
+            @Html.TextBoxFor(model => model.Idiom, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Idiom, "", new { @class =
+            "text-danger" })
+            </div>
+            <div>
+                <input type="submit" class="btn btn-success" value="Crear" />
+            </div>
+            </div>
+        }
+    </body>
+</html>

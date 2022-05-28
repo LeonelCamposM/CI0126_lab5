@@ -1,4 +1,4 @@
-namespace Laboratorio5.Models
+namespace Laboratorio05.Models
 {
     public class ErrorViewModel
     {
