@@ -47,5 +47,20 @@ namespace Laboratorio05.Handlers
             }
             return paises;
         }
+
+        public bool CrearPais(CountryModel pais)
+        {
+            var consulta = @"INSERT INTO [dbo].[Pais] ([Nombre],[Idioma] ,[Continente])
+                            VALUES(@Nombre, @Idioma, @Continente) ";
+            var comandoParaConsulta = new SqlCommand(consulta, conexion);
+            comandoParaConsulta.Parameters.AddWithValue("@Nombre", pais.Name);
+            comandoParaConsulta.Parameters.AddWithValue("@Idioma", pais.Idiom);
+            comandoParaConsulta.Parameters.AddWithValue("@Continente", pais.Continent);
+            conexion.Open();
+            bool exito = comandoParaConsulta.ExecuteNonQuery() >= 1;
+            conexion.Close();
+            return exito;
+        }
+
     }
 }
