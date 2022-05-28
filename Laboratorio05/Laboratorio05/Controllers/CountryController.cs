@@ -44,5 +44,46 @@ namespace Laboratorio05.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult EditCountry(int? identificador)
+        {
+            ActionResult vista;
+            try
+            {
+                var paisesHandler = new CountryHandler();
+                var pais = paisesHandler.ObtenerPaises().Find(model => model.Id == identificador);
+                if (pais == null)
+                {
+                    vista = RedirectToAction("Index");
+                }
+                else
+                {
+                    vista = View(pais);
+                }
+            }
+            catch
+            {
+                vista = RedirectToAction("Index");
+            }
+            return vista;
+        }
+
+        [HttpPost]
+        public ActionResult EditCountry(CountryModel country)
+        {
+            ViewBag.ExitoAlCrear = false;
+            try
+            {
+                var paisesHandler = new CountryHandler();
+                paisesHandler.EditarPais(country);
+                return RedirectToAction("Index", "Country");
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

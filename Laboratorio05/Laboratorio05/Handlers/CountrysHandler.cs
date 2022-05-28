@@ -60,5 +60,24 @@ namespace Laboratorio05.Handlers
             return exito;
         }
 
+        public bool EditarPais(CountryModel pais)
+        {
+            var consulta = @"UPDATE [dbo].[Pais] SET Nombre = @Nombre,
+                            Idioma = @Idioma,
+                            Continente = @Cointinente
+                            WHWERE Id = @Id";
+
+            var comandoParaConsulta = new SqlCommand(consulta, conexion);
+            comandoParaConsulta.Parameters.AddWithValue("@Nombre", pais.Name);
+            comandoParaConsulta.Parameters.AddWithValue("@Idioma", pais.Idiom);
+            comandoParaConsulta.Parameters.AddWithValue("@Continente", pais.Continent);
+            comandoParaConsulta.Parameters.AddWithValue("@Id", pais.Id);
+
+            conexion.Open();
+            bool exito = comandoParaConsulta.ExecuteNonQuery() >= 1;
+            conexion.Close();
+            return exito;
+        }
+
     }
 }
