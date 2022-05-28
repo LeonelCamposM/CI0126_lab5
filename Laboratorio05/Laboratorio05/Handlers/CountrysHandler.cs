@@ -64,8 +64,8 @@ namespace Laboratorio05.Handlers
         {
             var consulta = @"UPDATE [dbo].[Pais] SET Nombre = @Nombre,
                             Idioma = @Idioma,
-                            Continente = @Cointinente
-                            WHWERE Id = @Id";
+                            Continente = @Continente
+                            WHERE Id = @Id";
 
             var comandoParaConsulta = new SqlCommand(consulta, conexion);
             comandoParaConsulta.Parameters.AddWithValue("@Nombre", pais.Name);

@@ -1,7 +1,7 @@
 ﻿
 @model List<Laboratorio05.Models.CountryModel>;
 @{
-    ViewData["Title"] = "Cuntries";
+    ViewData["Title"] = "Countries";
 }
 <h1> @ViewBag.MainTitle </h1>
 
@@ -12,6 +12,9 @@
                 <th>Id</th>
                 <th>Idiom</th>
                 <th>Name</th>
+                <th>Continent</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +24,13 @@
                     <td>@item.Id</td>
                     <td>@item.Idiom</td>
                     <td>@item.Name</td>
+                    <td>@item.Continent</td>
+                    <td> @Html.ActionLink("Editar", "EditCountry", new {identificador = @item.Id},
+                    new { @class = "btn btn alert-info", @onclick = "return confirm('Quiere editar este país?');"})</td>
+
+                    <td> @Html.ActionLink("Borrar", "DeleteCountry", new {identificador = @item.Id},
+                    new { @class = "btn btn alert-danger", @onclick = "return confirm('Quiere editar este país?');"})</td>
+
                 </tr>
             }
         </tbody>
