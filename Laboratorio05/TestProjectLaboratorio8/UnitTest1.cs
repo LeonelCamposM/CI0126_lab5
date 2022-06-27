@@ -10,7 +10,9 @@ namespace TestProjectLaboratorio8
         IWebElement textBox;
         IWebElement elementFromDropDownMenu;
         IWebElement createButton;
+        IWebElement confirmationMessage;
 
+        string countryName = "Alemania4";
 
         [SetUp]
         public void startBrowser()
@@ -34,7 +36,7 @@ namespace TestProjectLaboratorio8
             driver.Manage().Window.Maximize();
             driver.Url = URL;
             textBox = driver.FindElement(By.Name("Name"));
-            textBox.SendKeys("Alemania2");
+            textBox.SendKeys(countryName);
 
             elementFromDropDownMenu = driver.FindElement(By.CssSelector("#Continent > option:nth-child(5)"));
             elementFromDropDownMenu.Click();
@@ -44,8 +46,9 @@ namespace TestProjectLaboratorio8
 
             createButton  = driver.FindElement(By.CssSelector("body > div > main > form > div > div:nth-child(4) > input"));
             createButton.Click();
+            confirmationMessage = driver.FindElement(By.CssSelector("body > div > main > div > h3"));
 
-            Assert.IsTrue(driver.Url == URL);
+            Assert.IsTrue(confirmationMessage.Displayed);
         }
     }
 }
